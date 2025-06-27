@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+      - health-sync_db_data:/usr/src/app/data
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    restart: unless-stopped
+
+volumes:
+  health-sync_db_data:
